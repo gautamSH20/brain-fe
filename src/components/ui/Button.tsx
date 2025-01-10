@@ -1,9 +1,11 @@
+import { ReactElement } from "react";
+
 export interface ButtonProps {
   vairant: "primary" | "secondary";
   size: "lg" | "md" | "sm";
   text: string;
-  startIcon?: any;
-  endIcon?: any;
+  startIcon?: ReactElement;
+  endIcon?: ReactElement;
   onclick: () => void;
 }
 
@@ -21,9 +23,12 @@ const variantProp = {
 export const Button = (props: ButtonProps) => {
   return (
     <button
-      className={styleSize[props.size] + " " + variantProp[props.vairant]}
+      className={`${styleSize[props.size]} ${variantProp[props.vairant]} m-2`}
     >
-      {props.text}
+      <div className="flex items-center">
+        {props.startIcon}
+        <div className="pl-2 pr-2">{props.text}</div>
+      </div>
     </button>
   );
 };
