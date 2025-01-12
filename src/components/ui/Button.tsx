@@ -6,7 +6,9 @@ export interface ButtonProps {
   text: string;
   startIcon?: ReactElement;
   endIcon?: ReactElement;
-  onclick: () => void;
+  onclick?: () => void;
+  fullWidth?: boolean;
+  loading?: boolean;
 }
 
 const styleSize = {
@@ -23,7 +25,10 @@ const variantProp = {
 export const Button = (props: ButtonProps) => {
   return (
     <button
-      className={`${styleSize[props.size]} ${variantProp[props.vairant]} m-2`}
+      className={`${styleSize[props.size]} ${variantProp[props.vairant]} m-2 ${
+        props.fullWidth ? " w-full flex justify-center items-center" : ""
+      }}`}
+      onClick={props.onclick}
     >
       <div className="flex items-center">
         {props.startIcon}

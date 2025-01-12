@@ -9,10 +9,10 @@ interface CardProps {
 
 export const Cards = ({ title, link, type }: CardProps) => {
   return (
-    <div className="p-4   bg-white shadow-md rounded-md  min-h-80 max-w-72 min-w-72">
+    <div className="p-4   bg-white shadow-md rounded-md  min-h-48 max-w-72 min-w-72">
       <div className="flex justify-between">
         <div className="flex items-center">
-          <div className="stroke-gray-500">
+          <div className="text-gray-200">
             <TwiterIcon />
           </div>
           {title}
