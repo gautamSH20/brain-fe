@@ -17,7 +17,7 @@ const styleSize = {
 
 const variantProp = {
   primary: "bg-[#5046e4] text-white",
-  secondary: "bg-[#e1e9ff] text-[#4136bf]",
+  secondary: "bg-[#9db6f9] text-[#4136bf]",
 };
 
 export const Button = (props: ButtonProps) => {
