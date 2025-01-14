@@ -1,13 +1,25 @@
+import axios from "axios";
+import { DeleteIcon } from "../../icons/Delete";
 import { ShareIcon } from "../../icons/ShareIcon";
 import { TwiterIcon } from "../../icons/TwiterIcon";
+import { BACKEND_URL } from "../../consfig";
 
 interface CardProps {
   title: string;
   link?: string;
+  _id?: string;
   type: "youtube" | "twitter";
 }
 
-export const Cards = ({ title, link, type }: CardProps) => {
+export const Cards = ({ title, link, type, _id }: CardProps) => {
+  async function del() {
+    await axios.delete(BACKEND_URL + "/api/v1/content", {
+      data: { contentId: _id },
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    });
+  }
   return (
     <div className="p-4   bg-white shadow-md rounded-md  min-h-48 max-w-72 min-w-72">
       <div className="flex justify-between">
@@ -19,11 +31,12 @@ export const Cards = ({ title, link, type }: CardProps) => {
         </div>
         <div className="flex">
           <div className="text-gray-500">
-            <a href={link} target="_blank"></a>
-            <ShareIcon />
+            <a href={link} target="_blank">
+              <ShareIcon />
+            </a>
           </div>
           <div className="text-gray-500">
-            <ShareIcon />
+            <DeleteIcon onclick={del} />
           </div>
         </div>
       </div>

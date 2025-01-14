@@ -1,17 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../components/ui/Button";
 import { Cards } from "../components/ui/Card";
 import { CreateComponentModal } from "../components/ui/CreateComponentModal";
 import { PlusIcon } from "../icons/PlusIcon";
 import { ShareIcon } from "../icons/ShareIcon";
 import { SideBare } from "../components/ui/SideBar";
+import { useContentHook } from "../hooks/useContentHook";
 
 export const DashBoard = () => {
   const [modal, setModal] = useState(false);
+  const { content, refersh } = useContentHook();
+
+  useEffect(() => {
+    refersh();
+  }, [modal]);
+  // useEffect(() => {
+  //   refersh();
+  // }, [contentLen]);
   return (
     <div>
       <SideBare />
-      <div className="h-screen ml-72 bg-gray-200">
+      <div className="min-h-screen ml-72 bg-gray-200 max-h-full">
         <CreateComponentModal
           open={modal}
           onClose={() => {
@@ -36,18 +45,19 @@ export const DashBoard = () => {
             text="Share"
             onclick={() => {}}
           ></Button>
+          <Button
+            text="signout"
+            vairant="primary"
+            size="md"
+            onclick={() => {
+              localStorage.removeItem("token");
+            }}
+          />
         </div>
-        <div className="flex gap-4 ml-4">
-          <Cards
-            title="First youtube"
-            type="youtube"
-            link="https://www.youtube.com/watch?v=-5ZdF6y5VcU"
-          />
-          <Cards
-            title="first tweet"
-            type="twitter"
-            link="https://x.com/gs841400/status/1877762787834831183"
-          />
+        <div className="flex gap-4 ml-4 flex-wrap">
+          {content.map(({ title, link, type, _id }) => (
+            <Cards title={title} type={type} link={link} _id={_id} />
+          ))}
         </div>
       </div>
     </div>

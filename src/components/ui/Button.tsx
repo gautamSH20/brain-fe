@@ -27,7 +27,8 @@ export const Button = (props: ButtonProps) => {
     <button
       className={`${styleSize[props.size]} ${variantProp[props.vairant]} m-2 ${
         props.fullWidth ? " w-full flex justify-center items-center" : ""
-      }}`}
+      }} ${props.loading ? " opacity-60" : null} `}
+      disabled={props.loading}
       onClick={props.onclick}
     >
       <div className="flex items-center">
