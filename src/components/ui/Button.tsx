@@ -9,6 +9,7 @@ export interface ButtonProps {
   onclick?: () => void;
   fullWidth?: boolean;
   loading?: boolean;
+  someCss?: string;
 }
 
 const styleSize = {
@@ -27,7 +28,9 @@ export const Button = (props: ButtonProps) => {
     <button
       className={`${styleSize[props.size]} ${variantProp[props.vairant]} m-2 ${
         props.fullWidth ? " w-full flex justify-center items-center" : ""
-      }} ${props.loading ? " opacity-60" : null} `}
+      }} ${props.loading ? " opacity-60" : null} ${
+        props.someCss ? props.someCss : null
+      }`}
       disabled={props.loading}
       onClick={props.onclick}
     >

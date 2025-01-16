@@ -8,10 +8,11 @@ interface CardProps {
   title: string;
   link?: string;
   _id?: string;
+  ontouch?: () => void;
   type: "youtube" | "twitter";
 }
 
-export const Cards = ({ title, link, type, _id }: CardProps) => {
+export const Cards = ({ title, link, type, _id, ontouch }: CardProps) => {
   async function del() {
     await axios.delete(BACKEND_URL + "/api/v1/content", {
       data: { contentId: _id },
@@ -36,7 +37,13 @@ export const Cards = ({ title, link, type, _id }: CardProps) => {
             </a>
           </div>
           <div className="text-gray-500">
-            <DeleteIcon onclick={del} />
+            <DeleteIcon
+              onclick={() => {
+                del();
+                if (!ontouch) return;
+                ontouch();
+              }}
+            />
           </div>
         </div>
       </div>
