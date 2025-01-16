@@ -7,13 +7,17 @@ import { ShareIcon } from "../icons/ShareIcon";
 import { SideBare } from "../components/ui/SideBar";
 import { useContentHook } from "../hooks/useContentHook";
 
+import axios from "axios";
+import { BACKEND_URL } from "../consfig";
+
 export const DashBoard = () => {
   const [modal, setModal] = useState(false);
   const { content, refersh } = useContentHook();
+  const [added, setAdded] = useState(0);
 
   useEffect(() => {
     refersh();
-  }, [modal]);
+  }, [added]);
   // useEffect(() => {
   //   refersh();
   // }, [contentLen]);
@@ -25,14 +29,15 @@ export const DashBoard = () => {
           open={modal}
           onClose={() => {
             setModal(() => false);
+            setAdded((a) => a + 1);
           }}
         />
 
-        <div className="p-6 flex justify-end">
+        <div className="p-2 flex justify-end flex-wrap ml-4 gap-4 ">
           <Button
             startIcon={<PlusIcon />}
             vairant="primary"
-            size="md"
+            size="sm"
             text="Add content"
             onclick={() => {
               setModal(() => true);
@@ -41,22 +46,40 @@ export const DashBoard = () => {
           <Button
             startIcon={<ShareIcon />}
             vairant="secondary"
-            size="md"
+            size="sm"
             text="Share"
-            onclick={() => {}}
-          ></Button>
-          <Button
-            text="signout"
-            vairant="primary"
-            size="md"
-            onclick={() => {
-              localStorage.removeItem("token");
+            onclick={async () => {
+              const response = await axios.post(
+                BACKEND_URL + "/api/v1/brain/share",
+                {
+                  share: true,
+                },
+                {
+                  headers: {
+                    Authorization: localStorage.getItem("token"),
+                  },
+                }
+              );
+              console.log(response);
+              {
+                response.data.message === "Link created"
+                  ? alert(`localhost:51731/${response.data.share}`)
+                  : alert(`localhost:51731/${response.data.Link}`);
+              }
             }}
-          />
+          ></Button>
         </div>
         <div className="flex gap-4 ml-4 flex-wrap">
           {content.map(({ title, link, type, _id }) => (
-            <Cards title={title} type={type} link={link} _id={_id} />
+            <Cards
+              title={title}
+              type={type}
+              link={link}
+              _id={_id}
+              ontouch={() => {
+                setAdded((a) => a - 1);
+              }}
+            />
           ))}
         </div>
       </div>

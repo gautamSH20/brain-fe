@@ -13,6 +13,7 @@ export function SignIn() {
   async function Signin() {
     const username = usernameRef.current?.value;
     const password = passwordRef.current?.value;
+
     const response = await axios.post(BACKEND_URL + "/api/v1/signin", {
       username,
       password,
@@ -25,8 +26,23 @@ export function SignIn() {
   return (
     <div className="h-screen w-screen bg-gray-200 flex justify-center items-center ease-in">
       <div className="bg-white rounded-xl shadow-md border p-8 min-w-48">
-        <Input reference={usernameRef} placeholder="Username" />
-        <Input reference={passwordRef} placeholder="Password" />
+        <Input
+          reference={usernameRef}
+          placeholder="Username"
+          fullWidth={true}
+        />
+        <Input
+          reference={passwordRef}
+          placeholder="Password"
+          fullWidth={true}
+        />
+        If you dont have an acount{":"}
+        <Button
+          vairant="secondary"
+          text="signup"
+          size="sm"
+          onclick={() => navigate("/signup")}
+        />
         <div className="flex justify-center">
           <Button
             vairant="primary"
