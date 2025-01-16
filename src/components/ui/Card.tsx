@@ -36,7 +36,7 @@ export const Cards = ({ title, link, type, _id, ontouch }: CardProps) => {
               <ShareIcon />
             </a>
           </div>
-          <div className="text-gray-500">
+          <div className="text-gray-500 cursor-pointer">
             <DeleteIcon
               onclick={() => {
                 del();
