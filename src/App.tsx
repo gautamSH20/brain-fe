@@ -3,7 +3,7 @@ import { SignIn } from "./pages/Sigin";
 import { SignUp } from "./pages/SiginUp";
 import { DashBoard } from "./pages/DashBoard";
 import { Share } from "./pages/Share";
-import { Home } from "./pages/home";
+import { Home } from "./pages/Home";
 
 function App() {
   return (
