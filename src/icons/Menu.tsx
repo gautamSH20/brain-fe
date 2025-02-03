@@ -1,7 +1,8 @@
-interface prodCross {
+interface probMenu {
   onclick?: () => void;
 }
-export const CloseIcon = (prop: prodCross) => {
+
+export const Menu = (prob: probMenu) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,13 +10,13 @@ export const CloseIcon = (prop: prodCross) => {
       viewBox="0 0 24 24"
       stroke-width="1.5"
       stroke="currentColor"
-      className="size-6"
-      onClick={prop.onclick}
+      className="size-8"
+      onClick={prob.onclick}
     >
       <path
         stroke-linecap="round"
         stroke-linejoin="round"
-        d="M6 18 18 6M6 6l12 12"
+        d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
       />
     </svg>
   );

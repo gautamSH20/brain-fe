@@ -41,7 +41,7 @@ export function SignUp() {
 
   return (
     <div className="h-screen w-screen bg-gray-200 flex justify-center items-center ease-in">
-      <div className="bg-white rounded-xl shadow-md border p-8 min-w-48">
+      <div className="bg-white rounded-xl shadow-md border p-8 min-w-48 animate-shadow hover:animate-none">
         <Input
           reference={usernameRef}
           placeholder="Username"

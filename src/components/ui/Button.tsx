@@ -15,7 +15,7 @@ export interface ButtonProps {
 const styleSize = {
   lg: "px-8 py-4 text-xl rounded-xl",
   md: "px-6 py-2 text-md rounded-md",
-  sm: "px-4 py-1 text-sm rounded-sm",
+  sm: "px-4 py-1 text-sm rounded-xs",
 };
 
 const variantProp = {

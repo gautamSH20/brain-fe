@@ -4,16 +4,10 @@ import { Button } from "../components/ui/Button";
 export const Home = () => {
   const navigate = useNavigate();
   return (
-    <div className="h-screen w-screen bg-[#0f172a] ">
-      <span className="absolute top-4 left-4 text-2xl text-blue-200">
-        Welome! IN-BRAIN! <br />
-        <span className="text-md text-slate-200 opacity-60">
-          here to keep your things to remember safe{" "}
-        </span>
-      </span>
+    <div className="h-screen flex justify-center flex-wrap w-screen bg-[#0f172a] ">
       <Button
         text="login"
-        someCss="absolute top-0 right-0 shadow hover:shadow-md hover:shadow-white ease-in duration-300 "
+        someCss="absolute top-0 right-0 shadow-sm hover:shadow-md hover:shadow-white ease-in duration-300 "
         vairant="primary"
         size="lg"
         onclick={() => {
@@ -21,8 +15,15 @@ export const Home = () => {
         }}
       />
 
-      <div className="h-screen w-screen  flex justify-center items-center">
-        <div className="bg-white rounded-xl shadow-inner p-4 hover:shadow-[#4f1177] ease-in duration-300">
+      <span className=" fixed  top-1/4 h-4 text-2xl text-blue-200  text-center ">
+        Welome! IN-BRAIN! <br />
+        <span className="text-md text-slate-200 opacity-60">
+          here to keep your things to remember safe{" "}
+        </span>
+      </span>
+
+      <div className="h-screen w-screen absolute md:static top-6 md:top-0  flex justify-center items-center ">
+        <div className="w-[40vh] md:w-fit bg-white rounded-xl shadow-xl p-4 shadow-[#4f1177] animate-new-bounce hover:animate-none ease-in duration-300">
           <span className="text-lg text-blue-800 font-bold shadow-md">
             Second brain
           </span>
@@ -39,7 +40,7 @@ export const Home = () => {
             onclick={() => {
               navigate("/signup");
             }}
-            someCss="shadow hover:shadow-md ease-in hover:shadow-[#4f1177] duration-300"
+            someCss="shadow-sm hover:shadow-md ease-in hover:shadow-[#4f1177] duration-300"
           />
         </div>
       </div>

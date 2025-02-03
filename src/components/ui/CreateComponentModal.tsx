@@ -59,15 +59,15 @@ export const CreateComponentModal = ({ open, onClose }: ComponentProp) => {
       {open && (
         <div>
           <div className="h-screen w-screen fixed top-0 left-0 bg-slate-500 opacity-60 "></div>
-          <div className="h-screen w-screen top-0 left-0 fixed flex justify-center">
+          <div className=" h-screen  w-screen  fixed flex justify-center ">
             <div className="flex flex-col justify-center ">
-              <span className="bg-white opacity-100 rounded">
-                <div className="flex justify-end">
+              <span className="bg-white opacity-100 rounded-sm">
+                <div className="flex  justify-end  ">
                   <div onClick={onClose} className="cursor-pointer">
                     <CloseIcon />
                   </div>
                 </div>
-                <div className="flex justify-center ">
+                <div className="flex md:flex-row flex-col justify-center  ">
                   <Input reference={titleRef} placeholder={"title"} />
                   <Input reference={linkRef} placeholder={"link"} />
                 </div>

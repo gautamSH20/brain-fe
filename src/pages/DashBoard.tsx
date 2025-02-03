@@ -23,8 +23,7 @@ export const DashBoard = () => {
   // }, [contentLen]);
   return (
     <div>
-      <SideBare />
-      <div className="min-h-screen ml-72 bg-gray-200 max-h-full">
+      <div className="min-h-screen  bg-gray-200 max-h-full">
         <CreateComponentModal
           open={modal}
           onClose={() => {
@@ -33,43 +32,46 @@ export const DashBoard = () => {
           }}
         />
 
-        <div className="p-2 flex justify-end flex-wrap ml-4 gap-4 ">
-          <Button
-            startIcon={<PlusIcon />}
-            vairant="primary"
-            size="sm"
-            text="Add content"
-            onclick={() => {
-              setModal(() => true);
-            }}
-          ></Button>
-          <Button
-            startIcon={<ShareIcon />}
-            vairant="secondary"
-            size="sm"
-            text="Share"
-            onclick={async () => {
-              const response = await axios.post(
-                BACKEND_URL + "/api/v1/brain/share",
-                {
-                  share: true,
-                },
-                {
-                  headers: {
-                    Authorization: localStorage.getItem("token"),
+        <section className="bg-sky-200 items-center flex justify-between mb-3">
+          <SideBare />
+          <div className="p-2 flex flex-col sm:flex-row md:gap-4 ml-auto w-fit ">
+            <Button
+              startIcon={<PlusIcon />}
+              vairant="primary"
+              size="sm"
+              text="Add content"
+              onclick={() => {
+                setModal(() => true);
+              }}
+            ></Button>
+            <Button
+              startIcon={<ShareIcon />}
+              vairant="secondary"
+              size="sm"
+              text="Share"
+              onclick={async () => {
+                const response = await axios.post(
+                  BACKEND_URL + "/api/v1/brain/share",
+                  {
+                    share: true,
                   },
+                  {
+                    headers: {
+                      Authorization: localStorage.getItem("token"),
+                    },
+                  }
+                );
+                console.log(response);
+                {
+                  response.data.message === "Link created"
+                    ? alert(`localhost:51731/${response.data.share}`)
+                    : alert(`localhost:51731/${response.data.Link}`);
                 }
-              );
-              console.log(response);
-              {
-                response.data.message === "Link created"
-                  ? alert(`localhost:51731/${response.data.share}`)
-                  : alert(`localhost:51731/${response.data.Link}`);
-              }
-            }}
-          ></Button>
-        </div>
-        <div className="flex gap-4 ml-4 flex-wrap">
+              }}
+            ></Button>
+          </div>
+        </section>
+        <div className="flex gap-4 ml-4 flex-wrap ">
           {content.map(({ title, link, type, _id }) => (
             <Cards
               title={title}
