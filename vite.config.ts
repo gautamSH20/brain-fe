@@ -8,8 +8,4 @@ export default defineConfig({
   build: {
     outDir: "dist", // Output directory for build files
   },
-  server: {
-    //@ts-ignore
-    historyApiFallback: true, // This allows the history API fallback for SPA routes
-  },
 });

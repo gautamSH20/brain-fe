@@ -1,6 +1,0 @@
-static:
-  path: .
-  redirects:
-    - source: "/dashboard"
-      destination: "/index.html"
-      status: 200
