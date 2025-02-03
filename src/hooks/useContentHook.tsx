@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export const useContentHook = () => {
   const [content, setContent] = useState([]);
+  const [usenmae, setusename] = useState("");
   const navigation = useNavigate();
   function refersh() {
     axios
@@ -15,11 +16,12 @@ export const useContentHook = () => {
       })
       .then((response) => {
         setContent(response.data.content);
+        setusename(response.data.content[0].userId.username);
       });
   }
   useEffect(() => {
     refersh();
     navigation("/dashboard");
   }, []);
-  return { content, refersh };
+  return { content, refersh, usenmae };
 };

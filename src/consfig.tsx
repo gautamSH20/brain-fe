@@ -1,9 +1,5 @@
-interface consfig {
-  isProd: boolean;
-}
+const IS_PROD = true;
 
-const obj: consfig = { isProd: true };
-
-export const BACKEND_URL = obj.isProd
+export const BACKEND_URL = IS_PROD
   ? "https://inbrain-app-backend.onrender.com"
   : "http://localhost:8000";

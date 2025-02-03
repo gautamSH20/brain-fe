@@ -17,7 +17,7 @@ export interface SidebarProps {
 }
 
 export const SideBare = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const toggle = () => {
     setVisible((e) => !e);

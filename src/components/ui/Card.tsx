@@ -52,7 +52,12 @@ export const Cards = ({ title, link, type, _id, ontouch }: CardProps) => {
         {type === "youtube" && (
           <iframe
             className="w-full"
-            src={link?.replace("watch", "embed").replace("?v=", "/")}
+            src={
+              link
+                ?.replace("watch?v=", "embed/")
+                .replace("youtu.be/", "youtube.com/embed/")
+                .split("?")[0]
+            }
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

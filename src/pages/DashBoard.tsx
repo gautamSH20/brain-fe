@@ -12,7 +12,7 @@ import { BACKEND_URL } from "../consfig";
 
 export const DashBoard = () => {
   const [modal, setModal] = useState(false);
-  const { content, refersh } = useContentHook();
+  const { content, refersh, usenmae } = useContentHook();
   const [added, setAdded] = useState(0);
 
   useEffect(() => {
@@ -32,7 +32,8 @@ export const DashBoard = () => {
           }}
         />
 
-        <section className="bg-sky-200 items-center flex justify-between mb-3">
+        <div className="text-center ">hi {usenmae}</div>
+        <section className="bg-sky-200  flex justify-between mb-3">
           <SideBare />
           <div className="p-2 flex flex-col sm:flex-row md:gap-4 ml-auto w-fit ">
             <Button
