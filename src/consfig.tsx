@@ -1,4 +1,4 @@
-const IS_PROD = false;
+const IS_PROD = true;
 
 export const BACKEND_URL = IS_PROD
   ? "https://inbrain-app-backend.onrender.com"
